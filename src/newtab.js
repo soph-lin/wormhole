@@ -25,17 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.createElement('div');
     container.className = 'container';
     container.innerHTML = `
-      <div class="logo">🕳️ Wormhole</div>
+      <img src="assets/wormhole.svg" alt="logo" style="width: 100px; height: 100px;"/>
       <div class="message">Welcome to Wormhole!</div>
       <div class="redirect-info">No custom URL set. Configure below or click the Wormhole extension icon.</div>
-      
+
       <div class="config-section">
-        <div class="config-title">Configure Custom URL</div>
         <div class="form-group">
-          <input type="url" id="newTabUrl" placeholder="https://example.com" />
-          <button id="saveBtn">Save</button>
+          <div class="input-container">
+            <input type="url" id="newTabUrl" placeholder="https://example.com" />
+            <button id="saveBtn" class="wormhole-btn">
+              <img src="assets/wormhole.svg" alt="Wormhole" />
+            </button>
+          </div>
         </div>
-        <div class="status" id="status"></div>
+        <div class="status-container">
+          <div class="status-message" id="status"></div>
+        </div>
       </div>
     `;
     
@@ -51,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
       
       if (!url) {
         showStatus('Please enter a valid URL', 'error');
+        setTimeout(() => {
+          status.classList.remove('show');
+        }, 3000);
         return;
       }
 
@@ -58,12 +66,20 @@ document.addEventListener('DOMContentLoaded', function() {
         new URL(url);
       } catch (e) {
         showStatus('Please enter a valid URL (include http:// or https://)', 'error');
+        setTimeout(() => {
+          status.classList.remove('show');
+        }, 3000);
         return;
       }
 
+      // Start loading animation
+      saveBtn.classList.add('loading');
+      saveBtn.disabled = true;
+
       chrome.storage.sync.set({ newTabUrl: url }, function() {
-        showStatus('Settings saved! Redirecting...', 'success');
+        showStatus('New tab configured! Redirecting...', 'success');
         
+        // The success message will fade out when redirecting
         setTimeout(() => {
           window.location.href = url;
         }, REDIRECT_DELAY);
@@ -78,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showStatus(message, type) {
       status.textContent = message;
-      status.className = `status ${type}`;
-      status.style.display = 'block';
+      status.className = `status-message ${type}`;
+      status.classList.add('show');
     }
   }
 }); 
