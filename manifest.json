@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Wormhole",
+  "version": "1.0",
+  "description": "Set a custom default new tab page with Wormhole",
+  "permissions": [
+    "tabs",
+    "storage",
+    "chrome://newtab/"
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Wormhole Settings"
+  },
+  "chrome_url_overrides": {
+    "newtab": "src/newtab.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
