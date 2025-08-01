@@ -5,8 +5,7 @@
   "description": "Set a custom default new tab page with Wormhole",
   "permissions": [
     "tabs",
-    "storage",
-    "chrome://newtab/"
+    "storage"
   ],
   "action": {
     "default_popup": "src/popup.html",
@@ -16,8 +15,9 @@
     "newtab": "src/newtab.html"
   },
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "src/assets/icon16.png",
+    "32": "src/assets/icon32.png",
+    "48": "src/assets/icon48.png",
+    "128": "src/assets/icon128.png"
   }
 }
