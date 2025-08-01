@@ -27,11 +27,19 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
+    // Start loading animation
+    saveBtn.classList.add('loading');
+    saveBtn.disabled = true;
+
     // Save to Chrome storage
     chrome.storage.sync.set({ newTabUrl: url }, function() {
       showStatus('Settings saved successfully!', 'success');
-      currentUrl.style.display = 'block';
-      currentUrlText.textContent = url;
+      
+      // Stop loading animation after a short delay
+      setTimeout(() => {
+        saveBtn.classList.remove('loading');
+        saveBtn.disabled = false;
+      }, 1000);
       
       // Clear status after 3 seconds
       setTimeout(() => {

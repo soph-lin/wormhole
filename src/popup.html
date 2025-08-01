@@ -17,10 +17,13 @@
 
       <div class="form-group">
         <label for="newTabUrl">New Tab URL:</label>
-        <input type="url" id="newTabUrl" placeholder="https://example.com" />
+        <div class="input-container">
+          <input type="url" id="newTabUrl" placeholder="https://example.com" />
+          <button id="saveBtn" class="wormhole-btn">
+            <img src="assets/wormhole.svg" alt="Wormhole" />
+          </button>
+        </div>
       </div>
-
-      <button id="saveBtn">Save Settings</button>
 
       <div id="status" class="status"></div>
     </div>
