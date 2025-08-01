@@ -2,15 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const urlInput = document.getElementById('newTabUrl');
   const saveBtn = document.getElementById('saveBtn');
   const status = document.getElementById('status');
-  const currentUrl = document.getElementById('currentUrl');
-  const currentUrlText = document.getElementById('currentUrlText');
 
   // Load current URL when popup opens
   chrome.storage.sync.get(['newTabUrl'], function(result) {
     if (result.newTabUrl) {
       urlInput.value = result.newTabUrl;
-      currentUrl.style.display = 'block';
-      currentUrlText.textContent = result.newTabUrl;
     }
   });
 

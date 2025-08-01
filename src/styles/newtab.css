@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Fira Mono', monospace;
   background: white;
   color: white;
   display: flex;
@@ -93,6 +93,7 @@ input[type="url"] {
   background: rgba(255, 255, 255, 0.9);
   color: #333;
   font-size: 14px;
+  font-family: 'Fira Mono', monospace;
 }
 
 input[type="url"]:focus {
@@ -107,6 +108,7 @@ button {
   border: none;
   border-radius: 5px;
   font-size: 14px;
+  font-family: 'Fira Mono', monospace;
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.2s ease;

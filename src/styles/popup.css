@@ -1,7 +1,7 @@
 body {
   width: 300px;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Fira Mono', monospace;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   margin: 0;
@@ -36,14 +36,18 @@ input[type="url"] {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  font-size: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 10px;
+  font-family: 'Fira Mono', monospace;
   box-sizing: border-box;
+  transition: background-color 0.2s ease;
 }
 
 input[type="url"]:focus {
   outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
@@ -55,6 +59,7 @@ button {
   border: none;
   border-radius: 5px;
   font-size: 14px;
+  font-family: 'Fira Mono', monospace;
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.2s ease;
