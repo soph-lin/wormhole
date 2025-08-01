@@ -51,6 +51,14 @@ input[type="url"] {
   transition: background-color 0.2s ease;
 }
 
+input[type="url"]::placeholder {
+  color: white;
+}
+
+input[type="url"]:focus::placeholder {
+  color: gray;
+}
+
 input[type="url"]:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.9);
