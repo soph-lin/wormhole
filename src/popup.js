@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const saveBtn = document.getElementById('saveBtn');
   const status = document.getElementById('status');
 
+  // Trigger popup open animation
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 50);
+
   // Load current URL when popup opens
   chrome.storage.sync.get(['newTabUrl'], function(result) {
     if (result.newTabUrl) {
