@@ -1,3 +1,5 @@
+const REDIRECT_DELAY = 5;
+
 document.addEventListener('DOMContentLoaded', function() {
   const redirectInfo = document.getElementById('redirectInfo');
   const configSection = document.getElementById('configSection');
@@ -11,15 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
       // Redirect to custom URL if set
       redirectInfo.textContent = `Redirecting to: ${result.newTabUrl}`;
       
-      // Small delay for loading animation
+      // Minimal delay for user to see the redirect message
       setTimeout(() => {
         window.location.href = result.newTabUrl;
-      }, 1500);
+      }, REDIRECT_DELAY);
     } else {
       // No custom URL, show configuration option
       redirectInfo.textContent = 'No custom URL set. Configure below or click the Wormhole extension icon.';
       
-      // Remove loading animation and show config
+      // Quick transition to show config
       setTimeout(() => {
         const loading = document.querySelector('.loading');
         if (loading) {
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         document.querySelector('.message').textContent = 'Welcome to Wormhole!';
         configSection.style.display = 'block';
-      }, 2000);
+      }, 800);
     }
   });
   
@@ -52,10 +54,10 @@ document.addEventListener('DOMContentLoaded', function() {
     chrome.storage.sync.set({ newTabUrl: url }, function() {
       showStatus('Settings saved! Redirecting...', 'success');
       
-      // Redirect after saving
+      // Quick redirect after saving
       setTimeout(() => {
         window.location.href = url;
-      }, 1500);
+      }, REDIRECT_DELAY);
     });
   });
 
