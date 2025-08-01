@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!url) {
       showStatus('Please enter a valid URL', 'error');
+      setTimeout(() => {
+        status.classList.remove('show');
+      }, 3000);
       return;
     }
 
@@ -23,7 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       new URL(url);
     } catch (e) {
-      showStatus('Please enter a valid URL (include http:// or https://)', 'error');
+      showStatus('Please enter a valid URL', 'error');
+      setTimeout(() => {
+        status.classList.remove('show');
+      }, 3000);
       return;
     }
 
@@ -33,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Save to Chrome storage
     chrome.storage.sync.set({ newTabUrl: url }, function() {
-      showStatus('Settings saved successfully!', 'success');
+      showStatus('New tab updated successfully!', 'success');
       
       // Stop loading animation after a short delay
       setTimeout(() => {
@@ -43,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Clear status after 3 seconds
       setTimeout(() => {
-        status.style.display = 'none';
+        status.classList.remove('show');
       }, 3000);
     });
   });
@@ -57,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function showStatus(message, type) {
     status.textContent = message;
-    status.className = `status ${type}`;
-    status.style.display = 'block';
+    status.className = `status-message ${type}`;
+    status.classList.add('show');
   }
 }); 

@@ -12,6 +12,7 @@ body {
   border-radius: 10px;
   padding: 20px;
   backdrop-filter: blur(10px);
+  position: relative;
 }
 
 h1 {
@@ -108,23 +109,37 @@ input[type="url"]:focus {
   to { transform: rotate(360deg); }
 }
 
-.status {
+.status-container {
   margin-top: 15px;
-  padding: 10px;
-  border-radius: 5px;
+  min-height: 20px;
+}
+
+.status-message {
+  padding: 8px 16px;
+  border-radius: 20px;
   text-align: center;
-  font-size: 12px;
-  display: none;
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.status-message.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 .success {
-  background: rgba(46, 204, 113, 0.3);
-  color: #2ecc71;
+  background: #92C872;
+  color: white;
 }
 
 .error {
-  background: rgba(231, 76, 60, 0.3);
-  color: #e74c3c;
+  background: #E55466;
+  color: white;
 }
 
 .current-url {
